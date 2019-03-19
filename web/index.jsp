@@ -14,7 +14,7 @@
       $(function () {
         $("a").click(function () {
           //浏览器带有缓存功能，不会多次请求相同数据
-          $("img").attr("src", "validcode")
+          $("img").attr("src", "validcode?date=" + new Date());
           return false;
         })
       })
