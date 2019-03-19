@@ -6,6 +6,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -51,5 +52,9 @@ public class ValidCodeServlet extends javax.servlet.http.HttpServlet {
         ServletOutputStream outputStream = resp.getOutputStream();
         //工具类
         ImageIO.write(image, "jpg", outputStream);
+
+        //把验证码放入到session中
+        HttpSession session = req.getSession();
+        session.setAttribute("code", "" + randList.get(0) + randList.get(1) + randList.get(2) + randList.get(3));
     }
 }
